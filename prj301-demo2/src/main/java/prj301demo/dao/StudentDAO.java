@@ -35,9 +35,9 @@ public class StudentDAO {
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     list.add(new StudentDTO(
-                        rs.getLong("id"),
-                        rs.getString("firstname"),
-                        rs.getString("lastname")
+                            rs.getLong("id"),
+                            rs.getString("firstname"),
+                            rs.getString("lastname")
                     ));
                 }
             }
@@ -45,9 +45,15 @@ public class StudentDAO {
             System.out.println("StudentDAO.list error: " + ex.getMessage());
         } finally {
             try {
-                if (rs != null) rs.close();
-                if (stm != null) stm.close();
-                if (con != null) con.close();
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
             } catch (SQLException ex) {
                 System.out.println("StudentDAO.list close error: " + ex.getMessage());
             }

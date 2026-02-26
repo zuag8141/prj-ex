@@ -49,7 +49,7 @@ public class StudentListServlet extends HttpServlet {
         StudentDAO studentDAO = new StudentDAO();
         List<StudentDTO> students = studentDAO.list(keyword);
 
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

@@ -24,9 +24,9 @@ public class UserDAO {
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     return new UserDTO(
-                        rs.getString("username"),
-                        rs.getString("name"),
-                        rs.getString("password")
+                            rs.getString("username"),
+                            rs.getString("name"),
+                            rs.getString("password")
                     );
                 }
             }
@@ -34,9 +34,15 @@ public class UserDAO {
             System.out.println("UserDAO.login error: " + ex.getMessage());
         } finally {
             try {
-                if (rs != null) rs.close();
-                if (stm != null) stm.close();
-                if (con != null) con.close();
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
             } catch (SQLException ex) {
                 System.out.println("UserDAO.login close error: " + ex.getMessage());
             }

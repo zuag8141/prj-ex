@@ -6,7 +6,8 @@ public class StudentDTO {
     private String firstName = null;
     private String lastName = null;
 
-    public StudentDTO() {}
+    public StudentDTO() {
+    }
 
     public StudentDTO(Long id, String firstName, String lastName) {
         this.id = id;
@@ -14,12 +15,27 @@ public class StudentDTO {
         this.lastName = lastName;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
