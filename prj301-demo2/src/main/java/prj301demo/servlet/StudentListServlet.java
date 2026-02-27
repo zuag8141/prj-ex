@@ -47,7 +47,7 @@ public class StudentListServlet extends HttpServlet {
         String sortCol = request.getParameter("sortCol");
 
         StudentDAO studentDAO = new StudentDAO();
-        List<StudentDTO> students = studentDAO.list(keyword);
+        List<StudentDTO> students = studentDAO.list(keyword, sortCol);
 
         try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
@@ -67,17 +67,18 @@ public class StudentListServlet extends HttpServlet {
             out.println("<p>Welcome, <strong>" + loginUser.getName() + "</strong> (" + loginUser.getUsername() + ")</p>");
             out.println("<h1>Student List</h1>");
 
+            String kw = (keyword != null ? keyword : "");
             out.println("<form action=''>");
-            out.println("<input name='keyword' type='text' placeholder='Search by first or last name' value='"
-                    + (keyword != null ? keyword : "") + "'>");
+            out.println("<input name='keyword' type='text' placeholder='Search by first or last name' value='" + kw + "'>");
             out.println("<input type='submit' value='Search'>");
             out.println("</form>");
 
+            String baseUrl = request.getContextPath() + "/StudentList?keyword=" + kw + "&sortCol=";
             out.println("<table border='1'>");
             out.println("<tr>");
             out.println("<th>ID</th>");
             out.println("<th>First Name</th>");
-            out.println("<th>Last Name</th>");
+            out.println("<th><a href='" + baseUrl + "lastname'>Last Name</a></th>");
             out.println("</tr>");
 
             for (StudentDTO s : students) {

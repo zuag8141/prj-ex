@@ -11,12 +11,20 @@ import java.util.List;
 
 public class StudentDAO {
 
-    public List<StudentDTO> list(String keyword) {
+    public List<StudentDTO> list(String keyword, String sortCol) {
         ArrayList<StudentDTO> list = new ArrayList<StudentDTO>();
         String sql = "SELECT id, firstname, lastname FROM student";
 
         if (keyword != null && !keyword.trim().isEmpty()) {
             sql += " WHERE firstname LIKE ? OR lastname LIKE ?";
+        }
+
+        if ("lastname".equalsIgnoreCase(sortCol)) {
+            sql += " ORDER BY lastname";
+        } else if ("firstname".equalsIgnoreCase(sortCol)) {
+            sql += " ORDER BY firstname";
+        } else if ("id".equalsIgnoreCase(sortCol)) {
+            sql += " ORDER BY id";
         }
 
         Connection con = null;
